@@ -37,12 +37,13 @@ toggle.addEventListener('click', (e) => {
     if (html.classList.contains('dark')) {
       html.classList.remove('dark');
       if (e.target) {
-        e.target.innerHTML = 'Dark mode';
+        (e.target as HTMLButtonElement).innerHTML = 'Dark mode';
       }
     } else {
       html.classList.add('dark');
       if (e.target) {
-        e.target.innerHTML = 'Light mode';
+        (e.target as HTMLButtonElement).innerHTML = 'Light mode';
+      }
     }
   }
 });
@@ -50,7 +51,7 @@ toggle.addEventListener('click', (e) => {
 // Javascript / jQuery - map a range of numbers to another range of numbers
 // https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
 
-type scale = (
+type Scale = (
   num: number,
   in_min: number,
   in_max: number,
@@ -58,7 +59,7 @@ type scale = (
   out_max: number
 ) => number;
 
-const scale: scale = (num, in_min, in_max, out_min, out_max) =>
+const scale: Scale = (num, in_min, in_max, out_min, out_max) =>
   ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
 
 function setTime() {
