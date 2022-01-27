@@ -56,14 +56,14 @@ function setTime() {
     var hours = time.getHours();
     var hoursForClock = hours % 12;
     var minutes = time.getMinutes();
-    var zeroAddedMinutes = minutes < 10 ? "0" + minutes : minutes;
+    var zeroAddedMinutes = minutes < 10 ? "0".concat(minutes) : minutes;
     var seconds = time.getSeconds();
     var ampm = hours >= 12 ? 'PM' : 'AM';
-    hoursEl.style.transform = "translate(-50%, -100%) rotate(" + scale(hoursForClock, 0, 11, 0, 360) + "deg)";
-    minutesEl.style.transform = "translate(-50%, -100%) rotate(" + scale(minutes, 0, 59, 0, 360) + "deg)";
-    secondsEl.style.transform = "translate(-50%, -100%) rotate(" + scale(seconds, 0, 59, 0, 360) + "deg)";
-    timeEl.innerHTML = hoursForClock + ":" + zeroAddedMinutes + " " + ampm;
-    dateEl.innerHTML = days[day] + ", " + months[month] + " <span class=\"circle\">" + date + "</span>";
+    hoursEl.style.transform = "translate(-50%, -100%) rotate(".concat(scale(hoursForClock, 0, 11, 0, 360), "deg)");
+    minutesEl.style.transform = "translate(-50%, -100%) rotate(".concat(scale(minutes, 0, 59, 0, 360), "deg)");
+    secondsEl.style.transform = "translate(-50%, -100%) rotate(".concat(scale(seconds, 0, 59, 0, 360), "deg)");
+    timeEl.innerHTML = "".concat(hoursForClock, ":").concat(zeroAddedMinutes, " ").concat(ampm);
+    dateEl.innerHTML = "".concat(days[day], ", ").concat(months[month], " <span class=\"circle\">").concat(date, "</span>");
 }
 setTime();
 setInterval(setTime, 1000);
